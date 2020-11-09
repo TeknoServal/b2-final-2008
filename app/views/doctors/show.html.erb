@@ -6,5 +6,9 @@
 
 <h3>Patients: </h3>
 <% @doctor.patients.each do |patient| %>
-  <p><%= patient.name %></p>
+  <div id="patient-<%= patient.id %>">
+
+    <p><%= patient.name %></p>
+    <%= button_to 'Remove patient', patient_delete_path(patient.id), params: {doc_id: @doctor.id} %>
+  </div>
 <% end %>
