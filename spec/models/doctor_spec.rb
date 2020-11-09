@@ -12,6 +12,7 @@ describe Doctor, type: :model do
   describe 'relationships' do
     it do
       should belong_to :hospital
+      should have_many :patient_doctors
       should have_many(:patients).through(:patient_doctors)
     end
   end
