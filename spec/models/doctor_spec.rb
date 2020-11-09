@@ -16,4 +16,5 @@ describe Doctor, type: :model do
       should have_many(:patients).through(:patient_doctors)
     end
   end
+
 end

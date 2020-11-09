@@ -12,4 +12,16 @@ describe Hospital, type: :model do
       should have_many :doctors
     end
   end
+
+  describe 'instance_methods' do
+    it '#doctor_amount' do
+      @hospital = Hospital.create(name: 'bill')
+
+      @doctor1 = @hospital.doctors.create!(name: 'Francis Harvestbringer', specialty: 'nasal spray', university: 'Harvard')
+    @doctor2 = @hospital.doctors.create!(name: 'Gerald Harvestbringer', specialty: 'nasal infections', university: 'Harvard')
+    @doctor3 = @hospital.doctors.create!(name: 'Emily Harvestbringer', specialty: 'nasal blockages', university: 'Harvard')
+
+      expect(@hospital.doctor_amount).to eq(3)
+    end
+  end
 end
