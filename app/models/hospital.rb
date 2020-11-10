@@ -6,4 +6,8 @@ class Hospital < ApplicationRecord
   def doctor_amount
     doctors.count
   end
+
+  def universities_represented
+    doctors.select(:university).distinct
+  end
 end
