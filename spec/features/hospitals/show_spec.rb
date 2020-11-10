@@ -23,7 +23,7 @@ describe 'Hospital show page' do
 
 
       @hospital.doctors.each do |doctor|
-        expect(page).to have_content(doctor.university)
+        expect(page).to have_content(doctor.university).once
       end
     end
   end
