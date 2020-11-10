@@ -15,19 +15,31 @@ describe Patient, type: :model do
     end
   end
 
-  # describe 'instance_methods' do
-  #   it '#delete_refs' do
-  #     @hospital = Hospital.create!(name: 'charles memorial hospital')
+  describe 'instance_methods' do
+    # it '#delete_refs' do
+    #   @hospital = Hospital.create!(name: 'charles memorial hospital')
 
-  #     @doctor = @hospital.doctors.create!(name: 'Francis Harvestbringer', specialty: 'nasal spray', university: 'Harvard')
+    #   @doctor = @hospital.doctors.create!(name: 'Francis Harvestbringer', specialty: 'nasal spray', university: 'Harvard')
 
-  #     @patient1 = @doctor.patients.create!(name: 'harry', age: 19)
-  #     @patient2 = @doctor.patients.create!(name: 'david', age: 24)
-  #     @patient3 = @doctor.patients.create!(name: 'guineveve', age: 31)
+    #   @patient1 = @doctor.patients.create!(name: 'harry', age: 19)
+    #   @patient2 = @doctor.patients.create!(name: 'david', age: 24)
+    #   @patient3 = @doctor.patients.create!(name: 'guineveve', age: 31)
 
-  #     @patient1.delete_refs
+    #   @patient1.delete_refs
 
-  #     expect(@patient.patient_doctors).to eq([])
-  #   end
-  # end
+    #   expect(@patient.patient_doctors).to eq([])
+    # end
+
+    it '#age_order' do
+      @hospital = Hospital.create!(name: 'charles memorial hospital')
+
+      @doctor = @hospital.doctors.create!(name: 'Francis Harvestbringer', specialty: 'nasal spray', university: 'Harvard')
+
+      @patient1 = @doctor.patients.create!(name: 'harry', age: 19)
+      @patient2 = @doctor.patients.create!(name: 'david', age: 24)
+      @patient3 = @doctor.patients.create!(name: 'guineveve', age: 20)
+
+      expect(Patient.age_order).to eq([@patient1, @patient3, @patient2])
+    end
+  end
 end

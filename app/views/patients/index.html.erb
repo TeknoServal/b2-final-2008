@@ -1,0 +1,9 @@
+<h1>Patients:</h1>
+
+<section>
+  <% @patients.each do |patient| %>
+    <div id='patient-<%= patient.id %>' class='patient-block'>
+      <p><%= patient.name %></p>
+    </div>
+  <% end %>
+</section>
