@@ -5,5 +5,5 @@ Rails.application.routes.draw do
 
   get '/hospitals/:id', to: 'hospitals#show'
 
-  post '/patients/delete/:id', to: 'patients#delete', as: :patient_delete
+  post '/patient_doctors/delete/:id', to: 'patient_doctors#delete', as: :patient_relation_delete
 end

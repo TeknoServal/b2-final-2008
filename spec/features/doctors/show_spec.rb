@@ -22,7 +22,7 @@ describe 'Doctor show page' do
       expect(page).to have_content(@doctor.hospital.name)
 
       @doctor.patients.each do |patient|
-        within("#patient-#{patient.id}") do
+        within("#relation-#{patient.patient_doctors.find_by(doctor_id: @doctor.id).id}") do
           expect(page).to have_content(patient.name)
         end
       end
@@ -32,13 +32,13 @@ describe 'Doctor show page' do
       visit "/doctors/#{@doctor.id}"
 
       @doctor.patients.each do |patient|
-        within("#patient-#{patient.id}") do
+        within("#relation-#{patient.patient_doctors.find_by(doctor_id: @doctor.id).id}") do
           expect(page).to have_content(patient.name)
           expect(page).to have_button('Remove patient')
         end
       end
 
-      within("#patient-#{@patient1.id}") do
+      within("#relation-#{@patient1.patient_doctors.find_by(doctor_id: @doctor.id).id}") do
         click_button('Remove patient')
       end
 
